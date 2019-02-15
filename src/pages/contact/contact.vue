@@ -1,5 +1,5 @@
 <template>
-    <div id="content">
+    <div>
         <beach></beach>
 <!--Section: Contact v.2-->
 <b-container class="mb-4 mt-5">
@@ -40,7 +40,7 @@ import Vue from 'vue';
 import 'vue-awesome/icons/map-marker-alt';
 import 'vue-awesome/icons/phone';
 import 'vue-awesome/icons/envelope';
-import Icon from 'vue-awesome/components/Icon';
+//import Icon from 'vue-awesome/components/Icon';
 import footer from '@/components/footer/footer.vue';
 import beach from '@/components/beach/beach.vue';
 import contactForm from '@/components/contactForm/contactForm.vue';
@@ -52,7 +52,7 @@ Vue.component('contact-form', contactForm);
 
 export default {
     components:{
-      'v-icon': Icon,
+      //'v-icon': Icon,
     },
     data: function() {
         return {
@@ -96,7 +96,6 @@ export default {
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
         outline:0;
         box-shadow: none;
-        webkit-box-shadow:0 1px 0 0 #4285f4;
     }
 
 
@@ -114,9 +113,9 @@ export default {
         height: auto;
         margin:0 0 .5rem 0;
     }
-  #content{
+  /* #content{
     padding-top:150px
-  }
+  } */
 
 
  #formRow {

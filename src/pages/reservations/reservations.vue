@@ -1,10 +1,10 @@
 <template>
     <div id="content"><br><br>
     
-        <b-container>
+        <b-container fluid>
             <h1 class="text-center">Pick your destination</h1><br>
             <b-row>
-                <b-col class="destinationColumn" @click="showModal(place)" cols="12" sm="auto" md="auto" lg="auto" v-for="place in places" >
+                <b-col style="float: none; margin: 0 auto;" class="destinationColumn" @click="showModal(place)" cols="12" sm="auto" md="auto" lg="auto" v-for="place in places" >
                     <destination-card
                         :instance= "place"
                     >
@@ -17,7 +17,7 @@
 
         <!-- Modal Component -->
 
-      <b-modal ref="myModalRef" hide-footer size="xl" variant="primary" :title="title">
+      <b-modal ref="myModalRef" hide-footer size="xl" variant="primary" :title="modal.title">
       <div class="d-block text-center">
         <h3>Hello From My Modal!</h3>
       </div>
@@ -94,9 +94,9 @@ export default {
 }
 </script>
 <style scoped>
-    #content{
+    /* #content{
         padding-top: 250px;
-    }
+    } */
     /* .destinationColumn{
         margin:0 auto;
     } */

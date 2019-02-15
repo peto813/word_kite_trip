@@ -14,15 +14,15 @@
     >
       <b-carousel-slide caption="Discover Los Roques!"
           text="The hidden jewel of the Caribbean"
-          v-for="(value, key) in items"
+          v-for="value in items"
           v-bind:key="value.location"
           :img-src="value.location"
       > 
       
       <b-row>
         <b-col></b-col>
-        <b-col md="4" lg="2">
-          <b-button size="lg" class="btn btn-success btn-block bookButton">Book Today!</b-button>
+        <b-col cols="6" md="4" lg="2">
+          <b-button variant="success" block class="bookButton">Book Today!</b-button>
         </b-col>
         <b-col></b-col>
       </b-row>
@@ -31,18 +31,38 @@
   </div>
 </template>
 <style>
-  @media (min-width: 992px) { 
-    button{
+  .carousel-caption {
+    padding-top:25px;
+    bottom:10%;
+  }
+  .carousel-caption >p{
+    font-size: 12px;
+  }
+  .carousel-caption > h3{
+    font-size: 0.95em;
+  }
+  .carousel-caption button{
+    font-size: 12px;
+  }
+  @media (min-width: 568px) { 
+    .carousel-caption button{
       font-size:18px;
     }
+    .carousel-caption >p{
+      font-size: 18px;
+    }
   }
+</style>
+
+<style scoped>
+
+
+
   .bookButton:hover{
     background: white;
     color:black;
   }
-  .carousel-caption, .carousel-indicators {
-    z-index: 0;
-  }
+
 </style>
 
 <script>
@@ -57,10 +77,10 @@
       }
     },
     methods: {
-      onSlideStart (slide) {
+      onSlideStart () {
         this.sliding = true
       },
-      onSlideEnd (slide) {
+      onSlideEnd () {
         this.sliding = false
       }
     }

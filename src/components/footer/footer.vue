@@ -6,6 +6,7 @@
     <b-container class="text-left">
       <social-sharing url="https://vuejs.org/" inline-template>
       <div id="socialDiv">
+        <div id="anchor-name" style="position: relative;" />
         <b-row class="py-4 d-flex align-items-center">
           <b-col md="6" lg="5" class="text-center text-md-left mb-4 mb-md-0">
             <h6 class="mb-0 text-white">{{$ml.with('VueJS').get('socialMedia')}}</h6>

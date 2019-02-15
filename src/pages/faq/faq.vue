@@ -1,6 +1,6 @@
 <template>
-<div id="content">
-    <b-container>
+<div>
+    <b-container fluid>
                 <div class="toggle-content">
                     <h1 class="pb-3 text-center mt-5">
                         Frequently asked questions
@@ -65,9 +65,9 @@ export default {
 </script>
 
 <style scope>
-  #content{
+  /* #content{
     padding-top:150px;
-  }
+  } */
   #footerContainer{
       margin-top:50px;
   }

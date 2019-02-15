@@ -255,11 +255,10 @@ export default {
         // //   }
         // },
         //...mapActions('account', ['login', 'logout']),
-        submit (e) {
+        submit () {
           //e.preventDefault()
           //alert('0a')
           //const userId = '123'
-          console.log(this.$router)
           //this.$router.push({ path: 'register', params: { email: '123' }})
           //this.$router.push({ name: 'register', params: { email:'1111' } })
           this.$router.push({ name: 'register', params: {email: this.form.email }});
@@ -309,10 +308,10 @@ h3 {
   margin-right: 0px!important;
 } */
 
-.container-fluid{
+/* .container-fluid{
   padding-left: 0px;
   padding-right: 0px;
-}
+} */
 .row.teal{
   background: #D6F77B;
   padding: 50px 0px;
@@ -384,7 +383,6 @@ h3 {
       display: none;
       text-align:center;
       color:#fff !important;
-      z-index:2;
   }
 }
 
@@ -425,8 +423,6 @@ h3 {
   .centered-caption h6{
       font-size:16px;
   }
-  #content{
-    padding-top:150px
-  }
+
 }
 </style>

@@ -3,23 +3,24 @@
 
 <div class="header">
       <b-row class="text-center promo1-row">
-          <b-col cols="12" sm="12" md="12" lg="12" xl="4">
+          <b-col cols="4">
             <div id="follow" @click="scrollInto">
               <strong>Follow Us</strong>
             </div>
           </b-col>
-          <b-col cols="12" sm="12" md="12" lg="12" xl="4">
+          <b-col cols="4">
             <div>
               <strong>+7864149998888</strong>
               </div>
           </b-col>
-          <b-col cols="12" sm="12" md="12" lg="12" xl="4">
+          <b-col cols="4">
             <div>
               <strong>webmaster@worldkitetrip.com</strong>
             </div>
           </b-col>
       </b-row>
 </div>
+
   <span class="position-absolute trigger"></span>
 
   <b-navbar id="myNav" toggleable="md" type="dark" variant="dark">
@@ -43,7 +44,7 @@
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
 
-        <b-nav-item-dropdown :text="$ml.with('VueJS').get('lang')" style="z-index:10" right>
+        <b-nav-item-dropdown :text="$ml.with('VueJS').get('lang')" right>
           <b-dropdown-item href="#"
             v-for="lang in $ml.list"
             :key="lang"
@@ -83,9 +84,12 @@
             el.offsetHeight; /* trigger reflow */
             el.style.animation = null; 
           }
-          let container = document.querySelector("footer");
-          container.scrollIntoView(true)
-          let faIcons = container.querySelectorAll('#socialDiv a')
+          let container = document.querySelector("#anchor-name");
+          container.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
+          var peo = window.scrollY
+          console.log(peo)
+          //window.scrollTo(0,peo+200);
+          let faIcons = document.querySelectorAll('#socialDiv a')
           faIcons.forEach(element => {
               reset_animation(element)
               element.classList.add("animated", "flash");
@@ -97,20 +101,21 @@
     },
     created:function(){
         this.$nextTick(() => {
-         // document.querySelector('#content').style.paddingTop='150px'
-            (new IntersectionObserver(function(e,o){
+            (new IntersectionObserver(function(e){
                 let navbar = document.querySelector('#myNav')
                 let header = document.querySelector('.header')
+                let content = document.querySelector('.container-fluid')
+                console.log(content)
                 if (e[0].intersectionRatio > 0){
                      navbar.classList.remove("stick");
                      header.classList.remove("headerstick");
-                      document.querySelector('#content').style.paddingTop='150px'
+                    content.classList.remove("morepadding");
                 } else {
                     navbar.classList.add("stick");
                     header.classList.add("headerstick");
-                    document.querySelector('#content').style.paddingTop='200.4px'//.classList.remove('customPadding')
+                    content.classList.add("morepadding");
                     
-                };
+                }
             })).observe(document.querySelector('.trigger'));
         });
 
@@ -129,42 +134,53 @@
     }
   }
 </script>
+
+<style>
+.morepadding{
+  padding-top: 201px!important;
+}
+</style>
+
   <style scoped>
-    
+    #navBar{
+      background:black;
+       z-index: 20;
+    }
    .navLinkContainer a{
       color:white;
       font-weight:bold;
       font-size: 18px;
-      transition: all 1.3s
+      /* transition: all 1.3s */
     }
 
     .navbar{
       padding:25px 1rem;
-      transition: all 1.3s;
+      transition: all 0.5s;
       background:black!important;
       position: fixed;
-      top: 44px;
+      top: 19px;
       width: 100%;
       left: 0;
-      z-index: 1;
+      z-index: 20;
     }
 
     .header {
       background: black;
-      padding: 10px 30px;
-      position:absolute;
+      padding:0px;
+      position:fixed;
       width: 100%;
       top:0;
       left:0;
-      transition: all 1s ease;
+      /* transition: all 0.5s ease; */
       color: #fff;
-      z-index: 3;
+      font-size: 0.8em;
+      z-index: 20;
     }
 
     .headerstick{
       color:black;
       padding:0;
-      top:-10px;
+      /* top:-10px; */
     }
 
     .stick{
@@ -172,12 +188,21 @@
       top: 0;
       right: 0;
       left: 0;
-      z-index: 2;
     }
 
     #follow{
       cursor: pointer;
     }
-    
+
+
+ @media only screen and (min-width: 576px) {
+   .header{
+     font-size:1rem;
+     padding: 0px 30px 70px;
+   }
+    /* .navbar{
+      top: 49px!important;
+    } */
+}
  </style>
 
