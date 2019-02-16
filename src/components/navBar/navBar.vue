@@ -24,7 +24,23 @@
   <span class="position-absolute trigger"></span>
 
   <b-navbar id="myNav" toggleable="md" type="dark" variant="dark">
-    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <!-- <b-navbar-toggle target="nav_collapse"></b-navbar-toggle> -->
+    <b-button
+        @click="showCollapse = !showCollapse"
+        type="button" 
+        aria-label="Toggle navigation"
+        aria-controls="nav_collapse"
+        aria-expanded="false"
+        class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+    </b-button>
+    <!-- <b-button
+      @click="showCollapse = !showCollapse"
+      :class="showCollapse ? 'collapsed' : null"
+      aria-controls="collapse4"
+      :aria-expanded="showCollapse ? 'true' : 'false'"
+    > -->
+      Toggle Collapse
+    </b-button>
       <b-navbar-brand href="#">
         <router-link to="/">
         <div style="height:80px">
@@ -32,14 +48,14 @@
         </div>
         </router-link>
       </b-navbar-brand>
-    <b-collapse is-nav id="nav_collapse">
-
-      <b-navbar-nav class="navLinkContainer">
-        <b-nav-item href="#"><router-link to="/"><span v-text="$ml.with('VueJS').get('home')" /></router-link></b-nav-item>
-        <b-nav-item class="anonymousLink"  href="#"><router-link to="/reservations"><span v-text="$ml.with('VueJS').get('reservations')" /></router-link></b-nav-item>
-        <b-nav-item class="anonymousLink" v-if="!userData.loggedIn" href="#"><router-link to="/login"><span v-text="$ml.with('VueJS').get('destinations')" /></router-link></b-nav-item>
-        <b-nav-item class="anonymousLink" href="#"><router-link to="/faq"><span v-text="$ml.with('VueJS').get('faq')" /></router-link></b-nav-item>
-        <b-nav-item class="anonymousLink"  href="#"><router-link to="/contact"><span/>Contact</router-link></b-nav-item>
+    <!-- <b-collapse is-nav id="nav_collapse"> -->
+<b-collapse class="mt-2" v-model="showCollapse" id="nav_collapse" is-nav>
+      <b-navbar-nav @click="showCollapse = !showCollapse" class="navLinkContainer">
+        <b-nav-item  href="#"><router-link to="/"><span v-text="$ml.with('VueJS').get('home')" /></router-link></b-nav-item>
+        <b-nav-item  class="anonymousLink"  href="#"><router-link to="/reservations"><span v-text="$ml.with('VueJS').get('reservations')" /></router-link></b-nav-item>
+        <b-nav-item  class="anonymousLink" v-if="!userData.loggedIn" href="#"><router-link to="/login"><span v-text="$ml.with('VueJS').get('destinations')" /></router-link></b-nav-item>
+        <b-nav-item  class="anonymousLink" href="#"><router-link to="/faq"><span v-text="$ml.with('VueJS').get('faq')" /></router-link></b-nav-item>
+        <b-nav-item  class="anonymousLink"  href="#"><router-link to="/contact"><span/>Contact</router-link></b-nav-item>
 
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
@@ -74,6 +90,11 @@
     components:{
       'v-icon': Icon
     },
+    data() {
+      return {
+        showCollapse: false
+      }
+    },
     methods: {
       goToProfile () {
         this.$router.push('/profile')
@@ -86,9 +107,7 @@
           }
           let container = document.querySelector("#anchor-name");
           container.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
-          var peo = window.scrollY
-          console.log(peo)
-          //window.scrollTo(0,peo+200);
+
           let faIcons = document.querySelectorAll('#socialDiv a')
           faIcons.forEach(element => {
               reset_animation(element)
@@ -105,7 +124,6 @@
                 let navbar = document.querySelector('#myNav')
                 let header = document.querySelector('.header')
                 let content = document.querySelector('.container-fluid')
-                console.log(content)
                 if (e[0].intersectionRatio > 0){
                      navbar.classList.remove("stick");
                      header.classList.remove("headerstick");
@@ -114,7 +132,6 @@
                     navbar.classList.add("stick");
                     header.classList.add("headerstick");
                     content.classList.add("morepadding");
-                    
                 }
             })).observe(document.querySelector('.trigger'));
         });
