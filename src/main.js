@@ -50,7 +50,6 @@ const routes = [
   { path: '/contact', component: contactPage },
   { path: '/reservations', component: reservations },
   { path: '/faq', component: faq },
-  // { path: '/invoices', component: invoices },
   // { path: '/login', component: login },
   // { path: '/payments', component: payments },
   // { path: '/profile', component: profile },

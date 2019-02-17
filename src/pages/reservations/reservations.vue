@@ -15,13 +15,21 @@
         <wkt-footer></wkt-footer>
 
 
-        <!-- Modal Component -->
-
-      <b-modal ref="myModalRef" hide-footer size="xl" variant="primary" :title="modal.title">
-      <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
-      </div>
-      <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+      <b-modal header-bg-variant="info" ref="myModalRef"  size="xl" variant="primary">
+            <b-container slot="modal-header" variant="danger">
+              <div>
+                  <h2>{{modal.title}}</h2>
+              </div>
+            </b-container>
+        <div class="d-block text-center">
+            
+            <roques v-if="modal.id==1"></roques>
+            <canaima v-else-if="modal.id==2"></canaima>
+            <jeri v-else-if="modal.id==3"></jeri>
+        </div>
+        <div slot="modal-footer">
+            <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close</b-button>
+        </div>
     </b-modal>
 
 
@@ -30,6 +38,12 @@
 <script>
 import Vue from 'vue';
 import footer from '@/components/footer/footer.vue';
+import roquesInfo from '@/components/roquesInfo/roquesInfo.vue';
+import jeri from '@/components/jeri/jeri.vue';
+import canaima from '@/components/canaima/canaima.vue';
+Vue.component('roques', roquesInfo);
+Vue.component('canaima', canaima);
+Vue.component('jeri', jeri);
 Vue.component('wkt-footer', footer);
 
 import desinationCard from '@/components/destinationCard/destinationCard.vue'
@@ -39,9 +53,10 @@ export default {
     },
     methods:{
         showModal(place) {
-            console.log(this)
-            console.log(place)
+
             this.selectCard(place)
+            this.modal.title= place.title;
+            this.modal.id= place.id;
             this.$refs.myModalRef.show()
         },
         hideModal() {
@@ -60,6 +75,7 @@ export default {
     data(){
         return {
             modal:{
+                id:1,
                 title:'',
                 content:'place explanation'
             },
@@ -94,6 +110,11 @@ export default {
 }
 </script>
 <style scoped>
+.modal-content h2{
+    color:white;
+    font-weight: bold;
+
+}
     /* #content{
         padding-top: 250px;
     } */
