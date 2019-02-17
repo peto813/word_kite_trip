@@ -84,7 +84,7 @@
   </b-container>
   <div class="footer-copyright text-center py-3">
     <b-container fluid>
-      &copy; 2019 Copyright: <a href="https://www.MDBootstrap.com"> Condominioaldia.net </a>
+      &copy; 2019 Copyright: <a href="https://www.MDBootstrap.com"> worldkitetrip.com </a>
     </b-container>
   </div>
 

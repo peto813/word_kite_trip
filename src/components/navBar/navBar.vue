@@ -33,13 +33,6 @@
         aria-expanded="false"
         class="navbar-toggler"><span class="navbar-toggler-icon"></span>
     </b-button>
-    <!-- <b-button
-      @click="showCollapse = !showCollapse"
-      :class="showCollapse ? 'collapsed' : null"
-      aria-controls="collapse4"
-      :aria-expanded="showCollapse ? 'true' : 'false'"
-    > -->
-      Toggle Collapse
     </b-button>
       <b-navbar-brand href="#">
         <router-link to="/">
@@ -48,18 +41,20 @@
         </div>
         </router-link>
       </b-navbar-brand>
-    <!-- <b-collapse is-nav id="nav_collapse"> -->
-<b-collapse class="mt-2" v-model="showCollapse" id="nav_collapse" is-nav>
+
+
+          <!-- <b-collapse is-nav id="nav_collapse"> -->
+      <b-collapse class="mt-2" v-model="showCollapse" id="nav_collapse" is-nav>
+
+
       <b-navbar-nav @click="showCollapse = !showCollapse" class="navLinkContainer">
         <b-nav-item  href="#"><router-link to="/"><span v-text="$ml.with('VueJS').get('home')" /></router-link></b-nav-item>
         <b-nav-item  class="anonymousLink"  href="#"><router-link to="/reservations"><span v-text="$ml.with('VueJS').get('reservations')" /></router-link></b-nav-item>
         <b-nav-item  class="anonymousLink" v-if="!userData.loggedIn" href="#"><router-link to="/login"><span v-text="$ml.with('VueJS').get('destinations')" /></router-link></b-nav-item>
         <b-nav-item  class="anonymousLink" href="#"><router-link to="/faq"><span v-text="$ml.with('VueJS').get('faq')" /></router-link></b-nav-item>
         <b-nav-item  class="anonymousLink"  href="#"><router-link to="/contact"><span/>Contact</router-link></b-nav-item>
-
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
-
         <b-nav-item-dropdown :text="$ml.with('VueJS').get('lang')" right>
           <b-dropdown-item href="#"
             v-for="lang in $ml.list"
@@ -123,7 +118,7 @@
             (new IntersectionObserver(function(e){
                 let navbar = document.querySelector('#myNav')
                 let header = document.querySelector('.header')
-                let content = document.querySelector('.container-fluid')
+                let content = document.querySelector('.container-fluid ,container')
                 if (e[0].intersectionRatio > 0){
                      navbar.classList.remove("stick");
                      header.classList.remove("headerstick");
