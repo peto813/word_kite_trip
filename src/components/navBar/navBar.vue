@@ -33,7 +33,6 @@
         aria-expanded="false"
         class="navbar-toggler"><span class="navbar-toggler-icon"></span>
     </b-button>
-    </b-button>
       <b-navbar-brand href="#">
         <router-link to="/">
         <div style="height:80px">
@@ -131,18 +130,6 @@
             })).observe(document.querySelector('.trigger'));
         });
 
-    },
-    computed: {
-      canViewInmuebles () {
-        let userIsCondo = (this.userData.role=='condo');
-        let userIsResident = (this.userData.role=='resident');
-        return userIsCondo || userIsResident;
-      },
-      canViewPayments () {
-        let userIsRentee = (this.userData.role=='rentee');
-        let userIsResident = (this.userData.role=='resident');
-        return userIsRentee || userIsResident;
-      }
     }
   }
 </script>
